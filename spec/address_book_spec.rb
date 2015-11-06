@@ -36,4 +36,24 @@ RSpec.describe AddressBook do
       expect(new_entry.email).to eq('augusta.king@lovelace.com')
     end
   end
+  
+  describe "#remove_entry" do
+    before(:each) do
+      @book = AddressBook.new
+      @book.add_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
+      @book.add_entry('James Jessie', '011.012.1815', 'augusta.king2@lovelace.com')
+    end
+    it 'deletes correct entry' do
+      expect(@book.entries.size).to eq 2
+      
+      @book.remove_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
+      expect(@book.entries.size).to eq 1
+    end
+    it 'does not delete entry if it does not exist' do
+      expect(@book.entries.size).to eq 2
+      
+      @book.remove_entry('Not Exists', '010.012.1815', 'augusta.king@lovelace.com')
+      expect(@book.entries.size).to eq 2
+    end
+  end
 end
