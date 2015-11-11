@@ -50,7 +50,7 @@ require_relative '../models/address_book'
      end
    end
    
-   def entry_submenu
+   def entry_n_submenu
      print "Entry number to view: "
      selection = gets.chomp.to_i
      
