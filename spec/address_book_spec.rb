@@ -41,11 +41,11 @@ RSpec.describe AddressBook do
   end
   
   describe "#detonate" do
-    it "deletes all entries"
+    it "deletes all entries" do
       book.add_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
-      book.add_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
-      book.add_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
-      
+      book.add_entry('Ada Lovelace', '010.012.1816', 'augusta.king@lovelace.com')
+      book.add_entry('Ada Lovelace', '010.012.1817', 'augusta.king@lovelace.com')
+      expect(book.entries.size).to eq 3
       book.detonate
       expect(book.entries.size).to eq 0
     end
